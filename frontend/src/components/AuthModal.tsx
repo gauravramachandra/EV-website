@@ -24,9 +24,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onAuth }) => {
     try {
       let res;
       if (mode === 'login') {
-        res = await axios.post('/api/auth/login', { email, password });
+        res = await axios.post<{ token: string; user: { name: string; email: string } }>('/api/auth/login', { email, password });
       } else {
-        res = await axios.post('/api/auth/register', { name, email, password });
+        res = await axios.post<{ token: string; user: { name: string; email: string } }>('/api/auth/register', { name, email, password });
       }
       localStorage.setItem('token', res.data.token);
       onAuth(res.data.user);
@@ -91,4 +91,4 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onAuth }) => {
   );
 };
 
-export default AuthModal; 
+export default AuthModal;

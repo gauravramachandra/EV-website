@@ -134,4 +134,4 @@ const Navbar: React.FC<NavbarProps> = ({ links = defaultLinks }) => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

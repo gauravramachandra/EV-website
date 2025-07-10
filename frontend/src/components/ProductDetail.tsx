@@ -32,7 +32,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onCustomize })
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/api/products/${productId}`)
+    (axios.get<Product>(`/api/products/${productId}`) as Promise<any>)
       .then(res => setProduct(res.data))
       .finally(() => setLoading(false));
   }, [productId]);
@@ -82,4 +82,4 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onCustomize })
   );
 };
 
-export default ProductDetail; 
+export default ProductDetail;

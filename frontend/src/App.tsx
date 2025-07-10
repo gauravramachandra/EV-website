@@ -31,7 +31,7 @@ const App: React.FC = () => {
   const [customizing, setCustomizing] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/products').then(res => setProducts(res.data));
+    axios.get<Product[]>('/api/products').then(res => setProducts(res.data));
   }, []);
 
   // Navbar links for smooth scroll

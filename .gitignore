@@ -11,13 +11,47 @@
 # production
 /build
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# OS
+Thumbs.db
+Desktop.ini
 
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Environment files
+.env
+.env.*
+backend/.env
+
+# Build output
+/dist
+backend/node_modules
+frontend/node_modules
+backend/dist
+
+# Misc
+*.local
+*.cache
+*.tmp
+
+# Mac
+.DS_Store
+
+# Windows
+*.exe
+*.dll
+*.bat
+*.cmd
