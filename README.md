@@ -144,7 +144,10 @@ npm start
 5. Open a Pull Request
 
 ---
+<<<<<<< HEAD
 
 ## License
 
 MIT
+=======
+>>>>>>> 8a9e5419e9bb1c7ad244c98bb5d2db4a49d26c94
