@@ -42,7 +42,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://ev-website-m7td.onrender.com/",
+  "proxy": "https://ev-website-m7td.onrender.com",
   "devDependencies": {
     "@types/react": "^19.1.8"
   }
