@@ -30,11 +30,21 @@ const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [customizing, setCustomizing] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('Fetching products...');
     api.get<Product[]>('/products')
-      .then(res => setProducts(res.data))
-      .catch(err => console.error('Failed to load products:', err));
+      .then(res => {
+        console.log('Products loaded:', res.data);
+        setProducts(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load products:', err);
+        console.error('Error details:', err.response?.data);
+        setLoading(false);
+      });
   }, []);
 
   // Navbar links for smooth scroll
@@ -47,8 +57,23 @@ const App: React.FC = () => {
     <div className="relative bg-black min-h-screen">
       <Navbar links={navbarLinks} />
       <main>
+        {loading && (
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="text-white text-xl">Loading Tesla Models...</div>
+          </div>
+        )}
+        
+        {!loading && products.length === 0 && (
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="text-center">
+              <div className="text-white text-xl mb-4">No Tesla models available</div>
+              <div className="text-gray-400">Check console for API connection issues</div>
+            </div>
+          </div>
+        )}
+
         {/* Show hero sections if no product selected */}
-        {!selectedProduct && !customizing && (
+        {!selectedProduct && !customizing && products.length > 0 && (
           <>
             {products.map((product, idx) => (
               <section id={product._id} key={product._id} className="fade-in-section">
