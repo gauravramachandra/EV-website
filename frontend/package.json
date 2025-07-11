@@ -10,7 +10,6 @@
     "@types/axios": "^0.9.36",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
-    "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "axios": "^1.10.0",
     "react": "^19.1.0",
@@ -43,5 +42,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://ev-website-m7td.onrender.com/"
+  "proxy": "https://ev-website-m7td.onrender.com/",
+  "devDependencies": {
+    "@types/react": "^19.1.8"
+  }
 }
