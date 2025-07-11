@@ -43,6 +43,51 @@ const App: React.FC = () => {
       .catch(err => {
         console.error('Failed to load products:', err);
         console.error('Error details:', err.response?.data);
+        
+        // Fallback to static data if API fails
+        console.log('Using fallback static data...');
+        const fallbackProducts: Product[] = [
+          {
+            _id: 'fallback-model-s',
+            name: 'Model S',
+            description: 'Plaid. Beyond Ludicrous.',
+            images: ['https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-S-New-Hero-Desktop-NA.png'],
+            basePrice: 89990,
+            specifications: {
+              range: '396 mi',
+              topSpeed: '200 mph',
+              acceleration: '1.99 s 0-60 mph',
+              power: '1,020 hp'
+            },
+            configurations: {
+              variants: [{ name: 'Long Range', price: 0 }, { name: 'Plaid', price: 20000 }],
+              colors: [{ name: 'Pearl White', price: 0, hex: '#F4F4F4' }, { name: 'Solid Black', price: 1500, hex: '#171A20' }],
+              wheels: [{ name: '19" Tempest Wheels', price: 0 }, { name: '21" Arachnid Wheels', price: 4500 }],
+              interiors: [{ name: 'All Black', price: 0 }, { name: 'Black and White', price: 2000 }]
+            }
+          },
+          {
+            _id: 'fallback-model-3',
+            name: 'Model 3',
+            description: 'Quickest acceleration—from zero to 60 mph in as little as 3.1 seconds.',
+            images: ['https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-3-Exterior-Hero-Desktop-LHD.jpg'],
+            basePrice: 42990,
+            specifications: {
+              range: '358 mi',
+              topSpeed: '162 mph',
+              acceleration: '3.1 s 0-60 mph',
+              power: '450 hp'
+            },
+            configurations: {
+              variants: [{ name: 'Rear-Wheel Drive', price: 0 }, { name: 'Long Range', price: 5000 }],
+              colors: [{ name: 'Pearl White', price: 0, hex: '#F4F4F4' }, { name: 'Solid Black', price: 1000, hex: '#171A20' }],
+              wheels: [{ name: '18" Aero Wheels', price: 0 }, { name: '19" Sport Wheels', price: 1500 }],
+              interiors: [{ name: 'All Black', price: 0 }, { name: 'Black and White', price: 1000 }]
+            }
+          }
+        ];
+        
+        setProducts(fallbackProducts);
         setLoading(false);
       });
   }, []);
