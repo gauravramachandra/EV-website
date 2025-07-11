@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import AuthModal from './AuthModal';
 
 interface NavbarLink {

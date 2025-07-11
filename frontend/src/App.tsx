@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProductDetail from './components/ProductDetail';
@@ -31,7 +32,9 @@ const App: React.FC = () => {
   const [customizing, setCustomizing] = useState(false);
 
   useEffect(() => {
-    api.get<Product[]>('/products').then(res => setProducts(res.data));
+    api.get<Product[]>('/products')
+      .then(res => setProducts(res.data))
+      .catch(err => console.error('Failed to load products:', err));
   }, []);
 
   // Navbar links for smooth scroll

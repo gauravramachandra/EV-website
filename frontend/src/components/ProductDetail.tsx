@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import api from '../api';
 
 interface Product {
@@ -32,9 +33,15 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onCustomize })
 
   useEffect(() => {
     setLoading(true);
-    (api.get<Product>(`/products/${productId}`) as Promise<any>)
-      .then(res => setProduct(res.data))
-      .finally(() => setLoading(false));
+    api.get<Product>(`/products/${productId}`)
+      .then(res => {
+        setProduct(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load product:', err);
+        setLoading(false);
+      });
   }, [productId]);
 
   if (loading) return <div className="text-center py-12 text-lg text-gray-400">Loading...</div>;
