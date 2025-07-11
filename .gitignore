@@ -28,6 +28,8 @@ Desktop.ini
 *.njsproj
 *.sln
 *.sw?
+*.swp
+*.swo
 
 # Logs
 logs
@@ -62,3 +64,21 @@ frontend/dist
 *.dll
 *.bat
 *.cmd
+
+# SSL/TLS certificates
+*.pem
+*.key
+*.crt
+
+# MongoDB
+*.mongodb
+mongod.conf
+
+# TypeScript
+*.tsbuildinfo
+
+# Cache directories
+.cache/
+.next/
+.nuxt/
+.temp/

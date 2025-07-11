@@ -26,6 +26,21 @@ app.use(cors({
 
 app.use(express.json());
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    name: 'EV Website API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      products: '/api/products',
+      auth: '/api/auth',
+      orders: '/api/orders'
+    },
+    docs: 'See README.md for API documentation'
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
@@ -178,4 +193,4 @@ mongoose.connect(MONGODB_URI)
   .catch((err) => {
     console.error('MongoDB connection error:', err);
     process.exit(1);
-  }); 
+  });

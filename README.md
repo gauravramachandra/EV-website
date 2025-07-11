@@ -12,18 +12,9 @@ A modern, responsive Tesla-inspired website built with React, Node.js, and Mongo
 
 ## Tech Stack
 
-### Frontend
-
-- React (TypeScript)
-- Tailwind CSS
-- Axios
-
-### Backend
-
-- Node.js + Express (TypeScript)
-- MongoDB + Mongoose
-- JWT authentication
-- bcrypt password hashing
+- **Frontend**: React (TypeScript), Tailwind CSS
+- **Backend**: Node.js, Express, MongoDB
+- **Authentication**: JWT, bcrypt
 
 ---
 
@@ -38,16 +29,12 @@ cd tesla-clone
 
 ### 2. **Install Dependencies**
 
-#### Frontend:
-
 ```bash
+# Frontend
 cd frontend
 npm install
-```
 
-#### Backend:
-
-```bash
+# Backend
 cd ../backend
 npm install
 ```
@@ -67,6 +54,7 @@ JWT_SECRET=your-secret-key
 
 ### 4. **Seed the Database**
 
+_Note: This step is not required now because the database gets auto-seeded by `server.ts`._
 Populate the database with Tesla products:
 
 ```bash
@@ -76,22 +64,31 @@ npx ts-node src/seed.ts
 
 ### 5. **Run the Development Servers**
 
-#### Start Backend:
-
 ```bash
+# Backend
 cd backend
 npm run dev
-```
 
-#### Start Frontend (in a new terminal):
-
-```bash
+# Frontend (new terminal)
 cd frontend
 npm start
 ```
 
 - Frontend: [http://localhost:3000](http://localhost:3000)
 - Backend: [http://localhost:5000](http://localhost:5000)
+
+---
+
+## Production Deployment
+
+The application is deployed on Render:
+
+- Frontend: Static site hosting - https://tesla-ev-clone-website.onrender.com/
+- Backend: Web service with automatic deployments - https://ev-website-m7td.onrender.com/
+- Database: MongoDB Atlas
+- Browse Tesla models, view details, and customize your car.
+- Place an order (requires login).
+- Orders and users are saved in MongoDB.
 
 ---
 
@@ -121,17 +118,18 @@ npm start
 
 ### Auth
 
-- `POST /api/auth/register` — Register
-- `POST /api/auth/login` — Login
+- `POST /api/auth/register` — Register new user
+- `POST /api/auth/login` — User login
 
 ### Products
 
-- `GET /api/products` — All products
-- `GET /api/products/:id` — Product details
+- `GET /api/products` — Get all products
+- `GET /api/products/:id` — Get product details
 
 ### Orders
 
 - `POST /api/orders` — Place order (requires JWT)
+- `GET /api/orders` — Get user orders (requires JWT)
 
 ---
 
@@ -144,10 +142,3 @@ npm start
 5. Open a Pull Request
 
 ---
-<<<<<<< HEAD
-
-## License
-
-MIT
-=======
->>>>>>> 8a9e5419e9bb1c7ad244c98bb5d2db4a49d26c94
