@@ -20,19 +20,19 @@ const defaultLinks = [
 ];
 
 const menuLinks = [
-  'Existing Inventory',
-  'Used Inventory',
-  'Trade-In',
-  'Cybertruck',
-  'Roadster',
-  'Semi',
-  'Charging',
-  'Powerwall',
-  'Commercial Energy',
-  'Utilities',
-  'Find Us',
-  'Support',
-  'Investor Relations',
+  { name: 'Existing Inventory', href: '/inventory/new' },
+  { name: 'Used Inventory', href: '/inventory/used' },
+  { name: 'Trade-In', href: '/trade-in' },
+  { name: 'Cybertruck', href: '/cybertruck' },
+  { name: 'Roadster', href: '/roadster' },
+  { name: 'Semi', href: '/semi' },
+  { name: 'Charging', href: '/charging' },
+  { name: 'Powerwall', href: '/powerwall' },
+  { name: 'Commercial Energy', href: '/commercial' },
+  { name: 'Utilities', href: '/utilities' },
+  { name: 'Find Us', href: '/findus' },
+  { name: 'Support', href: '/support' },
+  { name: 'Investor Relations', href: '/investors' },
 ];
 
 const Navbar: React.FC<NavbarProps> = ({ links = defaultLinks }) => {
@@ -121,8 +121,17 @@ const Navbar: React.FC<NavbarProps> = ({ links = defaultLinks }) => {
             <button className="absolute top-4 right-4 text-2xl text-black" onClick={() => setSideMenuOpen(false)}>&times;</button>
             <div className="mt-8 space-y-4">
               {menuLinks.map(link => (
-                <a key={link} href="#" className="block text-black text-lg font-medium hover:text-blue-600 transition">
-                  {link}
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  className="block text-black text-lg font-medium hover:text-blue-600 transition"
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent navigation for now
+                    setSideMenuOpen(false); // Close the menu
+                    // You can add navigation logic here when the routes are implemented
+                  }}
+                >
+                  {link.name}
                 </a>
               ))}
             </div>

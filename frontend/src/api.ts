@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || '/api',
+  baseURL: process.env.REACT_APP_API_URL || 'https://ev-website-m7td.onrender.com', 
 });
+
 
 // Add a request interceptor to automatically add the auth token to requests
 api.interceptors.request.use(
