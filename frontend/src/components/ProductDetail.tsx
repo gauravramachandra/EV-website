@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 interface Product {
   _id: string;
@@ -32,7 +32,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId, onCustomize })
 
   useEffect(() => {
     setLoading(true);
-    (axios.get<Product>(`/api/products/${productId}`) as Promise<any>)
+    (api.get<Product>(`/products/${productId}`) as Promise<any>)
       .then(res => setProduct(res.data))
       .finally(() => setLoading(false));
   }, [productId]);

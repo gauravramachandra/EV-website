@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 interface Product {
   _id: string;
@@ -47,7 +47,7 @@ const Customizer: React.FC<CustomizerProps> = ({ product, onBack }) => {
         setSubmitting(false);
         return;
       }
-      await axios.post('/api/orders', {
+      await api.post('/orders', {
         productId: product._id,
         configuration: {
           variant: variant.name,
@@ -62,10 +62,6 @@ const Customizer: React.FC<CustomizerProps> = ({ product, onBack }) => {
           state: 'Demo State',
           zipCode: '12345',
           country: 'Demo Country',
-        },
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
         },
       });
       setSuccess(true);
@@ -160,4 +156,4 @@ const Customizer: React.FC<CustomizerProps> = ({ product, onBack }) => {
   );
 };
 
-export default Customizer; 
+export default Customizer;

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProductDetail from './components/ProductDetail';
 import Customizer from './components/Customizer';
-import axios from 'axios';
+import api from './api';
 
 interface Product {
   _id: string;
@@ -31,7 +31,7 @@ const App: React.FC = () => {
   const [customizing, setCustomizing] = useState(false);
 
   useEffect(() => {
-    axios.get<Product[]>('/api/products').then(res => setProducts(res.data));
+    api.get<Product[]>('/products').then(res => setProducts(res.data));
   }, []);
 
   // Navbar links for smooth scroll

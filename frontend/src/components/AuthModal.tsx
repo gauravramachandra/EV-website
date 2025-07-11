@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 interface AuthModalProps {
   open: boolean;
@@ -24,9 +24,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onAuth }) => {
     try {
       let res;
       if (mode === 'login') {
-        res = await axios.post<{ token: string; user: { name: string; email: string } }>('/api/auth/login', { email, password });
+        res = await api.post<{ token: string; user: { name: string; email: string } }>('/auth/login', { email, password });
       } else {
-        res = await axios.post<{ token: string; user: { name: string; email: string } }>('/api/auth/register', { name, email, password });
+        res = await api.post<{ token: string; user: { name: string; email: string } }>('/auth/register', { name, email, password });
       }
       localStorage.setItem('token', res.data.token);
       onAuth(res.data.user);
