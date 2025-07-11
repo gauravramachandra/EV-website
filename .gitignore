@@ -2,14 +2,19 @@
 
 # dependencies
 /node_modules
+backend/node_modules
+frontend/node_modules
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+backend/coverage
+frontend/coverage
 
 # production
 /build
+frontend/build
 
 # OS
 Thumbs.db
@@ -35,12 +40,14 @@ yarn-error.log*
 .env
 .env.*
 backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
 
 # Build output
 /dist
-backend/node_modules
-frontend/node_modules
 backend/dist
+frontend/dist
 
 # Misc
 *.local
