@@ -14,10 +14,10 @@ const app = express();
 // CORS configuration for production
 app.use(cors({
   origin: [
-    'https://ev-website-frontend.onrender.com', 
-    'https://ev-website-frontend-*.onrender.com',
-    'http://localhost:3000',
-    'https://localhost:3000'
+    'https://tesla-ev-clone-website.onrender.com',
+    'https://ev-website-m7td.onrender.com', 
+    'http://localhost:3000',      // Allows local development frontend to access the backend
+    'https://localhost:3000'      // Allows local development with HTTPS
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
